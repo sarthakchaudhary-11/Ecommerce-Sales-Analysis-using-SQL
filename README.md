@@ -31,9 +31,7 @@ discount_percent
 
 📊 Project Steps and Queries
 🔶 STEP 1: Basic Checks
-sql
-Copy
-Edit
+
 SELECT * FROM Orders;
 SELECT COUNT(*) FROM Orders;
 🔶 STEP 2: KPI Analysis
@@ -46,9 +44,6 @@ Total Profit	SELECT SUM((List_Price - Cost_Price) * Quantity - ((List_Price * Qu
 🔶 STEP 3: Category & Product Performance
 Top 5 Product Categories by Revenue
 
-sql
-Copy
-Edit
 SELECT Category, SUM(List_Price * Quantity) AS Revenue
 FROM Orders
 GROUP BY Category
@@ -56,9 +51,6 @@ ORDER BY Revenue DESC
 LIMIT 5;
 Bottom 5 Sub-Categories by Profit
 
-sql
-Copy
-Edit
 SELECT Sub_Category, 
        SUM((List_Price - Cost_Price) * Quantity - ((List_Price * Quantity) * Discount_Percent / 100)) AS Total_Profit
 FROM Orders
@@ -68,9 +60,7 @@ LIMIT 5;
 🔶 STEP 4: Time-Based Insights
 Monthly Revenue Trend
 
-sql
-Copy
-Edit
+
 SELECT DATE_FORMAT(Order_Date, '%d-%m-%y') AS Month,
        SUM(List_Price * Quantity) AS Monthly_Revenue
 FROM Orders
@@ -78,9 +68,6 @@ GROUP BY Month
 ORDER BY Month;
 Month with Highest Profit
 
-sql
-Copy
-Edit
 SELECT DATE_FORMAT(Order_Date, '%Y-%m') AS Month,
        SUM((List_Price - Cost_Price) * Quantity - ((List_Price * Quantity) * Discount_Percent / 100)) AS Profit
 FROM Orders
@@ -90,9 +77,7 @@ LIMIT 1;
 🔶 STEP 5: State-wise Performance
 Top 10 States by Revenue
 
-sql
-Copy
-Edit
+
 SELECT State, SUM(List_Price * Quantity) AS Revenue
 FROM Orders
 GROUP BY State
@@ -101,9 +86,7 @@ LIMIT 10;
 🔶 STEP 6: Discount Impact Analysis
 Profit & Orders by Discount Range
 
-sql
-Copy
-Edit
+
 SELECT 
   CASE 
     WHEN Discount_Percent = 0 THEN 'No Discount'
@@ -118,9 +101,6 @@ GROUP BY Discount_Bucket;
 🔶 STEP 7: Top Performing Sub-Categories
 Top 3 Profitable Sub-Categories per Category
 
-sql
-Copy
-Edit
 SELECT *
 FROM (
     SELECT Category, Sub_Category,
